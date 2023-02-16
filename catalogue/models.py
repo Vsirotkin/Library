@@ -23,7 +23,7 @@ class Language(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    summary = models.TextField(max_length=50, help_text='Brief Description')
+    summary = models.TextField(max_length=250, help_text='Brief Description')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 characters long')
     genre = models.ManyToManyField(Genre, help_text='select a Genre')
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)

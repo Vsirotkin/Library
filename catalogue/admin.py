@@ -3,6 +3,10 @@ from django.contrib import admin
 from catalogue.models import Book, Author, Genre, BookInstance, Language
 
 
+class BookInline(admin.TabularInline):
+    model = Book
+
+
 class AuthorAdmin(admin.ModelAdmin):
     list_display = (
         'last_name',
@@ -12,6 +16,12 @@ class AuthorAdmin(admin.ModelAdmin):
     )
     fields = ['first_name', 'last_name', ('date_of_birth', 'date_of_death')]
 
+    inlines = [BookInline]
+
+
+class BookInstanceInline(admin.TabularInline):
+    model = BookInstance
+
 
 class BookAdmin(admin.ModelAdmin):
     list_display = (
@@ -19,6 +29,9 @@ class BookAdmin(admin.ModelAdmin):
         'author',
         'display_genre',
     )
+    inlines = [
+        BookInstanceInline,
+    ]
 
 
 class BookInstanceAdmin(admin.ModelAdmin):
