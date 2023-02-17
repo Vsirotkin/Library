@@ -37,7 +37,7 @@ class Book(models.Model):
     display_genre.short_description = 'Genre'
 
     def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.pk)])
+        return reverse('catalogue:book-detail', kwargs={'pk': self.pk})
 
 
 class BookInstance(models.Model):
