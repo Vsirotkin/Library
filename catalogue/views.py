@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from catalogue.models import Book, BookInstance, Author
 
@@ -6,7 +7,6 @@ from catalogue.models import Book, BookInstance, Author
 def index(request):
     num_books = Book.objects.all().count()
     num_instances = BookInstance.objects.all().count()
-
     num_instance_available = BookInstance.objects.filter(status__exact='a').count()
     num_authors = Author.objects.count()
 
@@ -17,3 +17,7 @@ def index(request):
         'num_authors': num_authors,
     }
     return render(request, 'catalogue/index.html', context)
+
+
+class BookListView(ListView):
+    model = Book

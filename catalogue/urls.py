@@ -6,5 +6,6 @@ from . import views
 app_name = 'catalogue'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('books/', views.BookListView.as_view(), name='books'),
     # path('', RedirectView.as_view(url='catalogue/', permanent=True), name='catalogue'),
 ]
