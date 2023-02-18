@@ -42,7 +42,7 @@ class Book(models.Model):
 
 class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4(), help_text='unique ID')
-    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True, related_name='book')
+    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True, related_name='instance')
     imprint = models.CharField(max_length=50)
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
