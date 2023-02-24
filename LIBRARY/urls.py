@@ -25,6 +25,10 @@ urlpatterns = [
 ]
 
 urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+
+urlpatterns += [
     path('', include('catalogue.urls', namespace='catalogue')),
 ]
 

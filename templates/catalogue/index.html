@@ -19,5 +19,12 @@ Library
     <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
     <li><strong>Authors:</strong> {{ num_authors }}</li>
 </ul>
+<p>You visited the page {{ num_visits }}
+    {% if num_visits == 1 %}
+        time
+    {% else %}
+        times
+    {% endif %}.
+</p>
 
 {% endblock %}
